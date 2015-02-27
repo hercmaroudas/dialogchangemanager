@@ -1,47 +1,198 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dialog Change Manager Demo</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Custom CSS for demo -->
+    <style type="text/css">
+        select {
+            width: 500px;
+        }
+        select:disabled {
+            background-color:lightgray;
+        } 
+        .panel-title {
+            font-weight:bold;
+        }
+        .button-disabled {
+            background-color:lightgray;
+            color:darkgray;
+            border-color:gray;
+            border-style:solid;
+        }
+        #sel-title {
+            width: 175px;
+            height:25px;
+            line-height:25px;
+        }
+    </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="dialogchangemanager.js"></script>
-    <script type="text/javascript" src="dialogchangemanager.test.js"></script>
+    <script type="text/javascript" src="dialogchangemanager.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Dialog Change Manager - Demo</h2>
+                <a href="readme.html">Readme First</a>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Employee Id</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="num-text" type="number" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Title</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select id="sel-title">
+                            <option value=""></option>
+                            <option value="Mr">Mr</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Mrs">Mrs</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>FullName</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="txt-fullname" type="text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Email</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="txt-email" type="email" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Url</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="txt-url" type="url" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-8">
+                        <label>
+                            <input id="chk-check1" type="checkbox" value="check1" />Check 1
+                        </label>
+                        <label>
+                            <input id="chk-check2" type="checkbox" value="check2" />Check 2
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>How far would you go?</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input id="rng-distance" type="range" min="1" max="1000" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Notes</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea id="txt-notes" rows="5" cols="35"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Your password?</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input id="pwd-password" type="password" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <input id="opt-optiona" name="options" type="radio" value="optiona" />Option A
+                        <input id="opt-optionb" name="options" type="radio" value="optionb" />Option B
+                        <label>
+                            <input id="opt-option1" name="options" type="radio" value="option1" />Option 1
+                        </label>
+                        <label>
+                            <input id="opt-option2" name="options" type="radio" value="option2" />Option 2
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label>Changes</label>
+                    </div>
+                        <div class="col-sm-10">
+                            <select id="sel-changes" size="10"></select>
+                        </div>
+                    </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button id="btn-open" type="button">Open Dialog</button>
+                        <button id="btn-is-dirty" type="button">Any Changes?</button>
+                        <button id="btn-changes" type="button">Get Changes</button>
+                        <button id="btn-close" type="button" class="button-disabled">Close Dialog</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Demo Implementation -->
     <script type="text/javascript">
         $(document).ready(function () {
-
+            // create a new instance of the dialog change manager.
             var changesManager = new dialogChangeManager();
-
-            $("#btn-load").click(function () {
-                loadDocument("container");
-                document.getElementById("opt-optiona").defaultChecked = true;
-                document.getElementById("chk-check1").defaultChecked = true;
+            $("#btn-open").
+                click(function () {
+                    loadDocument("container");
+                    document.getElementById("opt-optiona").defaultChecked = true;
+                    document.getElementById("chk-check1").defaultChecked = true;
             });
-
-            $("#btn-is-dirty").click(function () {
-                if (changesManager.isDirty())
-                    alert("The values have changed!");
-                else
-                    alert("Nothing was changed.");
+            $("#btn-is-dirty").
+                click(function () {
+                    // check to see if the dialog change manager has any changed values.
+                    if (changesManager.isDirty())
+                        alert("The values have changed!");
+                    else
+                        alert("Nothing was changed.");
             });
-
-            $("#btn-get-changes").click(function () {
-                var select = document.getElementById("sel-changes");
-                select.innerHTML = "";
-                changesManager.changedElements().forEach(printDialogChangedControls);
+            $("#btn-changes").
+                click(function () {
+                    var select = document.getElementById("sel-changes");
+                    select.innerHTML = "";
+                    // get all changed elements from dialog change manager and print them.
+                    changesManager.changedElements().forEach(printDialogChangedControls);
             });
-
-            $("#btn-reset-defaults").click(function () {
-                var select = document.getElementById("sel-changes");
-                select.innerHTML = "";
-                changesManager.reset();
+            $("#btn-close").
+                click(function () {
+                    var select = document.getElementById("sel-changes");
+                    select.innerHTML = "";
+                    // reset all monitored elements.
+                    changesManager.reset();
             });
-
             function loadDocument(elementId) {
                 var element = document.getElementById(elementId);
+                // create an instance of the dialog change manager to monitor DOM for changes.
                 changesManager.initialize(elementId);
             }
-
             function printDialogChangedControls(element, index, array) {
                 var select = document.getElementById("sel-changes");
                 var option = document.createElement("option");
@@ -50,89 +201,237 @@
             }
         });
     </script>
-</head>
-<body>
-    <div id="container">
-        <div id="inputcontainer">
-            <div>
-                <label>
-                    Employee Id
-                    <input id="num-text" type="number" value="" />
-                </label>
-            </div>
-            <div>
-                <span>Title</span>
-                <select id="sel-title">
-                    <option value=""></option>
-                    <option value="Mr">Mr</option>
-                    <option value="Miss">Miss</option>
-                    <option value="Mrs">Mrs</option>
-                </select>
-            </div>
-            <div>
-                <label>
-                    FullName
-                    <input id="txt-fullname" type="text" />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Email
-                    <input id="txt-email" type="email" />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Url
-                    <input id="txt-url" type="url" />
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input id="chk-check1" type="checkbox" value="check1" />Check 1
-                </label>
-                <label>
-                    <input id="chk-check2" type="checkbox" value="check2" />Check 2
-                </label>
-            </div>
-            <div>
-                <label>
-                    How far would you go?
-                    <input id="rng-distance" type="range" min="1" max="1000" />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Notes
-                </label>
-            </div>
-            <textarea id="txt-notes" rows="5" cols="35"></textarea>
-            <div>
-                <label>
-                    Lastly, what is your password?
-                    <input id="pwd-password" type="password" />
-                </label>
-            </div>
-            <div>
-                <input id="opt-optiona" name="options" type="radio" value="optiona" />Option A
-                <input id="opt-optionb" name="options" type="radio" value="optionb" />Option B
-                <label>
-                    <input id="opt-option1" name="options" type="radio" value="option1" />Option 1
-                </label>
-                <label>
-                    <input id="opt-option2" name="options" type="radio" value="option2" />Option 2
-                </label>
-            </div>
-            <div>
-                <select id="sel-changes" size="2"></select>
-            </div>
-            <div id="buttoncontainer">
-                <button id="btn-load" type="button">Open Dialog</button>
-                <button id="btn-is-dirty" type="button">Any Changes?</button>
-                <button id="btn-get-changes" type="button">Get Changes</button>
-                <button id="btn-reset-defaults" type="button">Reset Defaults</button>
-            </div>
-        </div>
-    </div>
+    <!-- DONT PAY ATTENTION TO SCRIPT BELOW - FOR DEMO FUCNTION ONLY -->
+    <script type="text/javascript">
+    var isDirtyButton;
+    var getChangesButton;
+    disableButtons();
+    var openButton = document.getElementById("btn-open");
+    openButton.onclick = function (obj) {
+        isDirtyButton.disabled = false;
+        isDirtyButton.setAttribute("class", "");
+        getChangesButton.disabled = false;
+        getChangesButton.setAttribute("class", "");
+        openButton.disabled = true;
+        openButton.setAttribute("class", "button-disabled");
+        closeButton.disabled = false;
+        closeButton.setAttribute("class", "");
+    }
+    var closeButton = document.getElementById("btn-close");
+    closeButton.onclick = function (obj) {
+        isDirtyButton.disabled = true;
+        isDirtyButton.setAttribute("class", "button-disabled");
+        getChangesButton.disabled = true;
+        getChangesButton.setAttribute("class", "button-disabled");
+        openButton.disabled = false;
+        openButton.setAttribute("class", "");
+        closeButton.disabled = true;
+        closeButton.setAttribute("class", "button-disabled");
+    }
+    function disableButtons() {
+        isDirtyButton = document.getElementById("btn-is-dirty");
+        isDirtyButton.disabled = true;
+        isDirtyButton.setAttribute("class", "button-disabled");
+        getChangesButton = document.getElementById("btn-changes");
+        getChangesButton.disabled = true;
+        getChangesButton.setAttribute("class", "button-disabled");
+    }
+    </script>
+
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

@@ -19,12 +19,13 @@ Basic Use:
 =============
 See Demo.html. Double click to open the file. (An internet connection is required for JQuery CDN).
 
-1. Click on "Open Dialog" to emulate opening a dialog with default values.
-2. Click on "Any Changes?". You should see an alert that says no changes. 
-3. Make changes to elements.
-4. Click on "Any Changes?". You should see an alert that says there were changes made. 
-5. Click on "Get Changes". A list will show you all the changes that were made. Including before and after changes.
-6. Click on reset. This should reset all controls to their defaults to before any changes were made.
+1. Add any values to the input controls to add default values or leave them empty. Emulate data when dialog loads.
+2. Click on "Open Dialog" to emulate opening a dialog with default values.
+3. Click on "Any Changes?". You should see an alert that says no changes. 
+4. Make changes to elements.
+5. Click on "Any Changes?". You should see an alert that says there were changes made. 
+6. Click on "Get Changes". A list will show you all the changes that were made. Including before and after changes.
+7. Click on reset. This should reset all controls to their defaults to before any changes were made.
 
 Todo:
 =============

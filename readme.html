@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Dialog Change Manager Demo - Readme</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Custom -->
+    <style type="text/css">
+        select {
+            width: 500px;
+        }
+
+        .panel-title {
+            font-weight: bold;
+        }
+
+        #sel-title {
+            width: 175px;
+            height: 25px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Dialog Change Manager - Readme</h2>
+                <a href="demo.html">Back to demo</a>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            Description:
+                            <br />
+                            =============
+                            <br />
+                            dialogchangemanager.js monitors for changes in input controls contained within an element (elementId) in initialize. Once the
+                            initialize has been called, all input controls contained within the element provided are monitored for changes.
+
+                            Currently Implemented and Supported Controls:
+                            "text"
+                            "textarea"
+                            "email"
+                            "number"
+                            "range"
+                            "url"
+                            "password"
+                            "checkbox"
+                            "radio"
+                            "select-one"
+                            <br />
+                            <br />
+                            Basic Use:
+                            <br />
+                            =============
+                            <br />
+                            See Demo.html. Double click to open the file. (An internet connection is required for JQuery CDN).
+                            <ul>
+                                <li>Add any values to the input controls to add default values or leave them empty. Emulate data when dialog loads.</li>
+                                <li>Click on "Open Dialog" to emulate opening a dialog with default values.</li>
+                                <li>Click on "Any Changes?". You should see an alert that says no changes.</li>
+                                <li>Make changes to elements.</li>
+                                <li>Click on "Any Changes?". You should see an alert that says there were changes made.</li>
+                                <li>Click on "Get Changes". A list will show you all the changes that were made. Including before and after changes.</li>
+                                <li>Click on reset. This should reset all controls to their defaults to before any changes were made.</li>
+                            </ul>
+
+                            <br />
+                            Todo:
+                            <br />
+                            =============
+                            <br />
+                            &lt;N/>A&gt;
+                            <br />
+                            <br />
+                            Unit Tests
+                            <br />
+                            =============
+                            <br />
+                            See dialogchangemanager.test.js on how to use dialogchangemanager.js. Open QunitTests.html to run the tests. Unit testing has
+                            been created using JQuery QUnit found here http://qunitjs.com/.
+                            <br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

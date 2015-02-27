@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -24,84 +23,119 @@
         </div>
         <!-- dialogChangeManager Test -->
         <div id="container" class="dom-hidden">
-            <div id="inputcontainer">
-                <div>
-                    <label>
-                        Employee Id
-                        <input id="num-text" type="number" value="" />
-                    </label>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Dialog Change Manager - Demo</h2>
                 </div>
-                <div>
-                    <span>Title</span>
-                    <select id="sel-title">
-                        <option value=""></option>
-                        <option value="Mr">Mr</option>
-                        <option value="Miss">Miss</option>
-                        <option value="Mrs">Mrs</option>
-                    </select>
-                </div>
-                <div>
-                    <label>
-                        FullName
-                        <input id="txt-fullname" type="text" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Email
-                        <input id="txt-email" type="email" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Url
-                        <input id="txt-url" type="url" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input id="chk-check1" type="checkbox" value="check1" />Check 1
-                    </label>
-                    <label>
-                        <input id="chk-check2" type="checkbox" value="check2" />Check 2
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        How far would you go?
-                        <input id="rng-distance" type="range" min="1" max="1000" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        Notes
-                    </label>
-                </div>
-                <textarea id="txt-notes" rows="5" cols="35"></textarea>
-                <div>
-                    <label>
-                        Lastly, what is your password?
-                        <input id="pwd-password" type="password" />
-                    </label>
-                </div>
-                <div>
-                    <input id="opt-optiona" name="options" type="radio" value="optiona" />Option A
-                    <input id="opt-optionb" name="options" type="radio" value="optionb" />Option B
-                    <label>
-                        <input id="opt-option1" name="options" type="radio" value="option1" />Option 1
-                    </label>
-                    <label>
-                        <input id="opt-option2" name="options" type="radio" value="option2" />Option 2
-                    </label>
-                </div>
-                <div>
-                    <select id="sel-changes" size="2"></select>
-                </div>
-                <div id="buttoncontainer">
-                    <button id="btn-load" type="button">Open Dialog</button>
-                    <button id="btn-is-dirty" type="button">Any Changes?</button>
-                    <button id="btn-get-changes" type="button">Get Changes</button>
-                    <button id="btn-reset-defaults" type="button">Reset Defaults</button>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Employee Id</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="num-text" type="number" value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Title</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select id="sel-title">
+                                <option value=""></option>
+                                <option value="Mr">Mr</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Mrs">Mrs</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>FullName</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="txt-fullname" type="text" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="txt-email" type="email" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Url</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="txt-url" type="url" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                        </div>
+                        <div class="col-sm-8">
+                            <label>
+                                <input id="chk-check1" type="checkbox" value="check1" />Check 1
+                            </label>
+                            <label>
+                                <input id="chk-check2" type="checkbox" value="check2" />Check 2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>How far would you go?</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input id="rng-distance" type="range" min="1" max="1000" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Notes</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea id="txt-notes" rows="5" cols="35"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label>Your password?</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="pwd-password" type="password" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <input id="opt-optiona" name="options" type="radio" value="optiona" />Option A
+                            <input id="opt-optionb" name="options" type="radio" value="optionb" />Option B
+                            <label>
+                                <input id="opt-option1" name="options" type="radio" value="option1" />Option 1
+                            </label>
+                            <label>
+                                <input id="opt-option2" name="options" type="radio" value="option2" />Option 2
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <select id="sel-changes" size="10"></select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button id="btn-load" type="button">Open Dialog</button>
+                            <button id="btn-is-dirty" type="button">Any Changes?</button>
+                            <button id="btn-get-changes" type="button">Get Changes</button>
+                            <button id="btn-reset-defaults" type="button">Reset Defaults</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -360,8 +360,8 @@ function dialogChangeManager() {
     }
 
     // Add function to check for null or empty string value.
-    String.prototype.isNullOrEmpty = function (value) {
-        return (value == undefined || value.toString().trim == "");
+    String.isNullOrEmpty = function (value) {
+        return (value == undefined || value.toString().trim === "");
     };
 }
 

@@ -46,7 +46,7 @@ function dialogChangeManager() {
 
     // Get the default input elements contained within the element object provided in initialize.
     this.inputElements = function () {
-        if (String.prototype.isNullOrEmpty(rootElementId))
+        if (String.isNullOrEmpty(rootElementId))
             throw new Error("Document has not been initialized.");
 
         var rootElement = document.getElementById(rootElementId);
@@ -73,7 +73,7 @@ function dialogChangeManager() {
 
     // Reset all elements to have their default values as when initialize was called. The document is initialized again after all values have been reset.
     this.reset = function () {
-        if (String.prototype.isNullOrEmpty(rootElementId))
+        if (String.isNullOrEmpty(rootElementId))
             throw new Error("Document has not been initialized.");
 
         var changedElements = this.changedElements();
@@ -196,7 +196,7 @@ function dialogChangeManager() {
     // Set a new value for the radio control.
     var newValueForRadio = function (element, array, uniqueKey) {
         // If radio doesn't belong to a group add using the id.
-        if (String.prototype.isNullOrEmpty(element.name)) {
+        if (String.isNullOrEmpty(element.name)) {
             array[uniqueKey] = element.checked;
         }
         else {
@@ -209,10 +209,10 @@ function dialogChangeManager() {
     // Attempt to get a unique key for the element to monitor for changes.
     var getElementUniqueKey = function (element) {
         // Try get the element id from the element, if not try get the name.
-        if (!String.prototype.isNullOrEmpty(element.id))
+        if (!String.isNullOrEmpty(element.id))
             return element.id;
 
-        if (!String.prototype.isNullOrEmpty(element.name))
+        if (!String.isNullOrEmpty(element.name))
             return element.name;
 
         return undefined;
@@ -263,7 +263,7 @@ function dialogChangeManager() {
     // Set the default checked value for a group of radio buttons. If the group does not exist use the id.
     var setDefaultValueForRadio = function (element, array, uniqueKey) {
         // If radio doesn't belong to a group add using the id.
-        if (String.prototype.isNullOrEmpty(element.name)) {
+        if (String.isNullOrEmpty(element.name)) {
             array[uniqueKey] = elemen.checked;
         }
         else {
@@ -285,10 +285,10 @@ function dialogChangeManager() {
     // Try get the label for the radio element, failing that the value, and lastly failing that the id. (all elements must have an id at least to be evaluated).
     var tryGetValueForRadio = function (element) {
         var radioLabel = element.nextSibling.nodeValue;
-        if (!String.prototype.isNullOrEmpty(radioLabel)) {
+        if (!String.isNullOrEmpty(radioLabel)) {
             return radioLabel.trim();
         }
-        else if (!String.prototype.isNullOrEmpty(element.value)) {
+        else if (!String.isNullOrEmpty(element.value)) {
             return element.value.trim();
         }
         else {
@@ -334,7 +334,7 @@ function dialogChangeManager() {
     // Adds input type element controls using their id or name as a key and the entire control as the value.
     var addInputElementToArray = function (element) {
         var uniqueId = getElementUniqueKey(element);
-        if (String.prototype.isNullOrEmpty(uniqueId))
+        if (String.isNullOrEmpty(uniqueId))
             return;
 
         if (inputElements == undefined)
